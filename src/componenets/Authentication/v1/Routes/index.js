@@ -4,6 +4,10 @@ const authController = require('../../controllers');
 
 const router = Router();
 
+router.get('/test', (req, res) => {
+    res.send('test');
+})
+
 
 router.post('/register', (req, res) => {
     authController.register(req, res)
