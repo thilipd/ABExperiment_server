@@ -90,30 +90,36 @@ const authController = {
 
     login: async (req, res) => {
 
+        const { email, password, provider } = req.body;
+
+        console.log(req.body)
+        const user = await User.findOne({ email });
+
         try {
-
-            const { email, password, provider } = req.body;
-
-            const user = await User.findOne({ email });
 
             if (provider == 'local') {
 
+                if (!user) {
+                    return res.status(400).json({ msg: "Not registered please signin" });
+                }
+
                 const match = await bcrypt.compare(`${password}`, user.password);
+
+                console.log(match)
 
 
                 if (!match) {
                     return res.status(400).json({ msg: "Please enter the right password" });
                 }
 
-                if (!user) {
-                    return res.status(400).json({ msg: "Not registered please signin" });
-                }
+
 
                 let accessToken = createAccessToken({ id: user._id });
 
                 return res.status(200).json({ accessToken: accessToken, user: user, msg: "Login Success" })
 
             } else {
+
                 if (!user) {
                     const { first_name, last_name, avatar } = req.body;
 
@@ -138,15 +144,7 @@ const authController = {
             res.status(400).send(error)
         }
 
-
-
-
     }
-
-
-
-
-
 
 }
 
