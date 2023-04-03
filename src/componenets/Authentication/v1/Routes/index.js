@@ -4,7 +4,9 @@ const authController = require('../../controllers');
 
 const router = Router();
 
-router.get('/test', (req, res) => {
+router.post('/test', (req, res) => {
+
+    console.log(req.body)
     res.send('test');
 })
 
