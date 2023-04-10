@@ -105,8 +105,6 @@ const authController = {
 
                 const match = await bcrypt.compare(`${password}`, user.password);
 
-                console.log(match)
-
 
                 if (!match) {
                     return res.status(400).json({ msg: "Please enter the right password" });
