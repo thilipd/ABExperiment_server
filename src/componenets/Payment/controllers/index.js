@@ -62,7 +62,7 @@ const paymentController  = {
                 },
                 "amount": {
                     "currency": "USD",
-                    "total": "25.00"
+                    "total": "2.00"
                 },
                 "description": "This is the payment description."
             }]

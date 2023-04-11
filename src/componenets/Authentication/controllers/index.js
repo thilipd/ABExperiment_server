@@ -14,6 +14,12 @@ const {
 
 const authController = {
 
+    connect: (req, res)=> {
+
+        res.status(200).json({msg: "connected to server"})
+
+    },
+
 
 
     register: async (req, res) => {
