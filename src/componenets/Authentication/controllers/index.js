@@ -16,7 +16,7 @@ const authController = {
 
     connect: (req, res)=> {
 
-        res.status(200).json({msg: "connected to server"})
+        res.status(200).json({msg: "connected to server "})
 
     },
 
